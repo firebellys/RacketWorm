@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="45" height="80" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="dirt-tiles" tilewidth="16" tileheight="16">
+  <image source="dirt-tiles.png" width="384" height="256"/>
+ </tileset>
+ <layer name="NoFence" width="45" height="80">
+  <data encoding="base64" compression="zlib">
+   eJzt2rkNAlEQRMG/QBIcPjaHh7E2h0/CkAUQC23jz0pfVEvljl4A05qZmdn/btuhEQAAAAAAAAAAAJjEM+4FToXNr6K7D82aNWv+MQytzWIei6GP5mU6V7GOTSfNu3Tu4xDHTprP6bzENW4TN79bzR//p7C52hdt2Q7D
+  </data>
+ </layer>
+ <layer name="Tiles" width="45" height="80">
+  <data encoding="base64" compression="zlib">
+   eJztzsENgCAQRNGlAum/IexCu5Aj2wImBmLeS/51MhEAAAAAAAAAAAAAAMCfPFlffWLSUSJqWf0C4FstOzfYmHFl9wYbvDMAm/kIrQ==
+  </data>
+ </layer>
+ <objectgroup name="Object Layer 1" width="45" height="80"/>
+</map>

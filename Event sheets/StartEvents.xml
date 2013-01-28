@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>StartEvents</name>
+    <events>
+        <include>GlobalEvents</include>
+        <event-block>
+            <conditions>
+                <condition id="6" name="On object clicked" type="Mouse">
+                    <param id="0" name="Mouse button">0</param>
+                    <param id="1" name="Click type">0</param>
+                    <param id="2" name="Object clicked">Start</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-2" name="Go to layout" type="System">
+                    <param id="0" name="Layout">CutScene</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="-2" name="On start of layout" type="System" />
+            </conditions>
+            <actions>
+                <action id="4" name="Preload" type="Audio">
+                    <param id="0" name="Audio file">Thump2</param>
+                </action>
+                <action id="4" name="Preload" type="Audio">
+                    <param id="0" name="Audio file">Splat</param>
+                </action>
+                <action id="4" name="Preload" type="Audio">
+                    <param id="0" name="Audio file">DirtChomp</param>
+                </action>
+                <action id="4" name="Preload" type="Audio">
+                    <param id="0" name="Audio file">Scream</param>
+                </action>
+                <action id="0" name="Play" type="Audio">
+                    <param id="0" name="Audio file">DEATH WORM</param>
+                    <param id="2" name="Loop">0</param>
+                    <param id="3" name="Volume">0</param>
+                    <param id="1" name="Tag (optional)">&quot;BGMusic&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="3" name="Local key exists" type="WebStorage">
+                    <param id="0" name="Key">&quot;HighScore&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" type="System">
+                    <param id="0" name="Variable">TotalScore</param>
+                    <param id="1" name="Value">WebStorage.LocalValue(&quot;HighScore&quot;)</param>
+                </action>
+                <action id="0" name="Set text" type="YourScore">
+                    <param id="0" name="Text">TotalScore</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="3" name="Local key exists" type="WebStorage">
+                    <param id="0" name="Key">&quot;HighestLevel&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" type="System">
+                    <param id="0" name="Variable">HighestLevel</param>
+                    <param id="1" name="Value">WebStorage.LocalValue(&quot;HighestLevel&quot;)</param>
+                </action>
+                <action id="0" name="Set text" type="HighestLevel">
+                    <param id="0" name="Text">HighestLevel</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="7" name="Cursor is over object" type="Mouse">
+                    <param id="0" name="Object">Start</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="5" name="Set frame" type="Start">
+                    <param id="0" name="Frame number">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="7" inverted="1" name="Cursor is over object" type="Mouse">
+                    <param id="0" name="Object">Start</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="5" name="Set frame" type="Start">
+                    <param id="0" name="Frame number">0</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

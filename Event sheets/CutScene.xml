@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>CutScene</name>
+    <events>
+        <include>GlobalEvents</include>
+        <event-block>
+            <conditions>
+                <condition id="-2" name="On start of layout" type="System" />
+            </conditions>
+            <actions>
+                <action id="2" name="Stop" type="SnakeHead" />
+                <action id="0" name="Set text" type="CutSceneText">
+                    <param id="0" name="Text">&quot;Chadworth Wormington Chester Dirt the III was enoying his pipe and listening to his favorite music when the apartment above him started quite a racket. If this keeps up, his apartment might be damaged, and he will loose your security deposit! You better help him do something quick!&quot;</param>
+                </action>
+                <action id="-9" name="Set value" type="System">
+                    <param id="0" name="Variable">LevelCurrent</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-16" name="Set opacity" type="Back">
+                    <param id="0" name="Opacity">25</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="6" name="On object clicked" type="Mouse">
+                    <param id="0" name="Mouse button">0</param>
+                    <param id="1" name="Click type">0</param>
+                    <param id="2" name="Object clicked">Back</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Set text" type="CutSceneText">
+                    <param id="0" name="Text">&quot;Chadworth Wormington Chester Dirt the III was enoying his pipe and listening to his favorite music when the apartment above him started quite a racket. If this keeps up, his apartment might be damaged, and he will loose your security deposit! You better help him do something quick!&quot;</param>
+                </action>
+                <action id="-16" name="Set opacity" type="Back">
+                    <param id="0" name="Opacity">25</param>
+                </action>
+                <action id="-16" name="Set opacity" type="Forward">
+                    <param id="0" name="Opacity">100</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="6" name="On object clicked" type="Mouse">
+                    <param id="0" name="Mouse button">0</param>
+                    <param id="1" name="Click type">0</param>
+                    <param id="2" name="Object clicked">Forward</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Set text" type="CutSceneText">
+                    <param id="0" name="Text">&quot;Use the mouse to direct Chadworth up to the surface to deal with the noisy neighbors. Each dirt block you eat will be deducted from your seucirty deposit. Each boulder costs a lot more. Each time a noise hits your apartment, you will loose some security deposit as well. Move fast, but move smart!&quot;</param>
+                </action>
+                <action id="-16" name="Set opacity" type="Back">
+                    <param id="0" name="Opacity">100</param>
+                </action>
+                <action id="-16" name="Set opacity" type="Forward">
+                    <param id="0" name="Opacity">25</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="6" name="On object clicked" type="Mouse">
+                    <param id="0" name="Mouse button">0</param>
+                    <param id="1" name="Click type">0</param>
+                    <param id="2" name="Object clicked">Next</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-2" name="Go to layout" type="System">
+                    <param id="0" name="Layout">MainLayout</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="7" name="Cursor is over object" type="Mouse">
+                    <param id="0" name="Object">Next</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="5" name="Set frame" type="Next">
+                    <param id="0" name="Frame number">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="7" inverted="1" name="Cursor is over object" type="Mouse">
+                    <param id="0" name="Object">Next</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="5" name="Set frame" type="Next">
+                    <param id="0" name="Frame number">0</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

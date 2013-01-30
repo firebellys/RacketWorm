@@ -4,7 +4,7 @@
     <name>GlobalEvents</name>
     <events>
         <variable constant="0" name="TotalScore" static="0" type="number">0</variable>
-        <variable constant="0" name="LevelCurrent" static="0" type="number">1</variable>
+        <variable constant="0" name="LevelCurrent" static="0" type="number">20</variable>
         <variable constant="0" name="SessionScore" static="0" type="number">0</variable>
         <variable constant="0" name="HighestLevel" static="0" type="number">0</variable>
     </events>

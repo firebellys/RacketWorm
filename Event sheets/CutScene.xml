@@ -14,7 +14,7 @@
                     <param id="0" name="Text">&quot;Chadworth Wormington Chester Dirt the III was enoying his pipe and listening to his favorite music when the apartment above him started quite a racket. If this keeps up, his apartment might be damaged, and he will loose your security deposit! You better help him do something quick!&quot;</param>
                 </action>
                 <action id="-9" name="Set value" type="System">
-                    <param id="0" name="Variable">LevelCurrent</param>
+                    <param id="0" name="Variable">SessionLevel</param>
                     <param id="1" name="Value">1</param>
                 </action>
                 <action id="-16" name="Set opacity" type="Back">

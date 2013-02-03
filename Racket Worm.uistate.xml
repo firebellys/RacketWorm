@@ -13,12 +13,12 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <layout>MainLayout</layout>
         <layout>StartScreen</layout>
         <layout>Complete</layout>
-        <layout active="1">CutScene</layout>
-        <event-sheet>GlobalEvents</event-sheet>
+        <layout>CutScene</layout>
         <event-sheet>StartEvents</event-sheet>
         <event-sheet>Complete</event-sheet>
         <event-sheet>CutScene</event-sheet>
-        <event-sheet>MainEvents</event-sheet>
+        <event-sheet active="1">MainEvents</event-sheet>
+        <event-sheet>GlobalEvents</event-sheet>
     </open-tabs>
     <properties>
         <property expanded="1" name="Project settings" />

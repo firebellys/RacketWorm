@@ -14,7 +14,7 @@
             </conditions>
             <actions>
                 <action id="-9" name="Set value" type="System">
-                    <param id="0" name="Variable">LevelCurrent</param>
+                    <param id="0" name="Variable">SessionLevel</param>
                     <param id="1" name="Value">1</param>
                 </action>
                 <action id="0" name="Set local value" type="WebStorage">
@@ -22,7 +22,7 @@
                     <param id="1" name="Value">1</param>
                 </action>
                 <action id="-9" name="Set value" type="System">
-                    <param id="0" name="Variable">LevelPoints</param>
+                    <param id="0" name="Variable">SecurityDeposit</param>
                     <param id="1" name="Value">10000</param>
                 </action>
                 <action id="-2" name="Go to layout" type="System">
@@ -40,11 +40,11 @@
             </conditions>
             <actions>
                 <action id="-10" name="Add to" type="System">
-                    <param id="0" name="Variable">LevelCurrent</param>
+                    <param id="0" name="Variable">SessionLevel</param>
                     <param id="1" name="Value">1</param>
                 </action>
                 <action id="-10" name="Add to" type="System">
-                    <param id="0" name="Variable">LevelPoints</param>
+                    <param id="0" name="Variable">SecurityDeposit</param>
                     <param id="1" name="Value">1000</param>
                 </action>
                 <action id="-2" name="Go to layout" type="System">
@@ -52,7 +52,7 @@
                 </action>
                 <action id="0" name="Set local value" type="WebStorage">
                     <param id="0" name="Key">&quot;LevelCurrent&quot;</param>
-                    <param id="1" name="Value">LevelCurrent</param>
+                    <param id="1" name="Value">SessionLevel</param>
                 </action>
             </actions>
         </event-block>
@@ -110,10 +110,10 @@
             </conditions>
             <actions>
                 <action id="0" name="Set text" type="HighScore2">
-                    <param id="0" name="Text">TotalScore</param>
+                    <param id="0" name="Text">SessionHighScore</param>
                 </action>
                 <action id="0" name="Set text" type="YourScore">
-                    <param id="0" name="Text">SessionScore</param>
+                    <param id="0" name="Text">HighScore</param>
                 </action>
             </actions>
         </event-block>
@@ -126,23 +126,23 @@
                 <event-block any="1">
                     <conditions>
                         <condition id="-8" name="Compare two values" type="System">
-                            <param id="0" name="First value">SessionScore</param>
+                            <param id="0" name="First value">HighScore</param>
                             <param id="1" name="Comparison">4</param>
-                            <param id="2" name="Second value">LevelPoints</param>
+                            <param id="2" name="Second value">SecurityDeposit</param>
                         </condition>
                         <condition id="-8" name="Compare two values" type="System">
-                            <param id="0" name="First value">LevelCurrent</param>
+                            <param id="0" name="First value">SessionLevel</param>
                             <param id="1" name="Comparison">4</param>
                             <param id="2" name="Second value">HighestLevel</param>
                         </condition>
                     </conditions>
                     <actions>
                         <action id="-9" name="Set value" type="System">
-                            <param id="0" name="Variable">LevelPoints</param>
+                            <param id="0" name="Variable">SecurityDeposit</param>
                             <param id="1" name="Value">WebStorage.LocalValue(&quot;HighScore&quot;)</param>
                         </action>
                         <action id="-9" name="Set value" type="System">
-                            <param id="0" name="Variable">LevelCurrent</param>
+                            <param id="0" name="Variable">SessionLevel</param>
                             <param id="1" name="Value">WebStorage.LocalValue(&quot;HighestLevel&quot;)</param>
                         </action>
                     </actions>

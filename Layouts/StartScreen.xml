@@ -64,7 +64,7 @@
                         <hotspotX>0</hotspotX>
                         <hotspotY>0</hotspotY>
                         <angle>0</angle>
-                        <opacity>0.5</opacity>
+                        <opacity>0.649999976</opacity>
                     </world>
                 </instance>
                 <instance type="Startuptime">
@@ -194,7 +194,7 @@
                     <properties>
                         <text>Highest Level</text>
                         <initial-visibility>Visible</initial-visibility>
-                        <font>Arial,-32,400,0</font>
+                        <font>Arial Narrow,-32,400,0</font>
                         <color>255,255,255</color>
                         <horizontal-alignment>Center</horizontal-alignment>
                         <vertical-alignment>Top</vertical-alignment>

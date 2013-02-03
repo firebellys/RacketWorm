@@ -3,9 +3,37 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>GlobalEvents</name>
     <events>
-        <variable constant="0" name="TotalScore" static="0" type="number">0</variable>
-        <variable constant="0" name="LevelCurrent" static="0" type="number">20</variable>
-        <variable constant="0" name="SessionScore" static="0" type="number">0</variable>
-        <variable constant="0" name="HighestLevel" static="0" type="number">0</variable>
+        <variable constant="0" name="SessionHighScore" static="0" type="number">0</variable>
+        <variable constant="0" name="SessionLevel" static="0" type="number">1</variable>
+        <variable constant="0" name="HighScore" static="0" type="number">0</variable>
+        <variable constant="0" name="HighestLevel" static="0" type="number">1</variable>
+        <event-block>
+            <conditions>
+                <condition id="-2" name="On start of layout" type="System" />
+            </conditions>
+            <actions>
+                <action id="4" name="Preload" type="Audio">
+                    <param id="0" name="Audio file">Thump2</param>
+                </action>
+                <action id="4" name="Preload" type="Audio">
+                    <param id="0" name="Audio file">Splat</param>
+                </action>
+                <action id="4" name="Preload" type="Audio">
+                    <param id="0" name="Audio file">DirtChomp</param>
+                </action>
+                <action id="4" name="Preload" type="Audio">
+                    <param id="0" name="Audio file">Scream</param>
+                </action>
+                <action id="0" name="Play" type="Audio">
+                    <param id="0" name="Audio file">DEATH WORM</param>
+                    <param id="2" name="Loop">0</param>
+                    <param id="3" name="Volume">0</param>
+                    <param id="1" name="Tag (optional)">&quot;BGMusic&quot;</param>
+                </action>
+                <action id="4" name="Preload" type="Audio">
+                    <param id="0" name="Audio file">ExplosionDerez</param>
+                </action>
+            </actions>
+        </event-block>
     </events>
 </c2eventsheet>

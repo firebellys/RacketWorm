@@ -8,9 +8,10 @@
         <variable constant="0" name="Chaos" static="0" type="number">0</variable>
         <variable constant="0" name="GameTime" static="0" type="number">0</variable>
         <variable comment="number of miners" constant="0" name="minerCount" static="0" type="number">0</variable>
-        <variable comment="StartingCAsh" constant="0" name="LevelPoints" static="0" type="number">10000</variable>
+        <variable comment="StartingCAsh" constant="0" name="SecurityDeposit" static="0" type="number">10000</variable>
         <variable comment="launch a generation" constant="0" name="gen" static="0" type="number">2</variable>
-        <event-block>
+        <variable comment="PickTheWeather" constant="0" name="Weather" static="0" type="number">0</variable>
+        <event-block collapsed="1">
             <conditions>
                 <condition id="-2" name="On start of layout" type="System" />
             </conditions>
@@ -19,11 +20,8 @@
                     <param id="0" name="Pin to">SnakeHead</param>
                     <param id="1" name="Mode">0</param>
                 </action>
-                <action behavior="Physics" id="12" name="Set world gravity" type="SnakeHead">
-                    <param id="0" name="Gravity">10</param>
-                </action>
-                <action id="0" name="Set text" type="Points">
-                    <param id="0" name="Text">LevelPoints</param>
+                <action id="0" name="Set text" type="SecurityDespositText">
+                    <param id="0" name="Text">SecurityDeposit</param>
                 </action>
                 <action disabled="1" id="0" name="Play" type="Audio">
                     <param id="0" name="Audio file">DEATH WORM</param>
@@ -35,37 +33,121 @@
                     <param id="0" name="Variable">GameTime</param>
                     <param id="1" name="Value">0</param>
                 </action>
-                <action behavior="Pin" id="0" name="Pin to object" type="SnakeBody1">
-                    <param id="0" name="Pin to">SnakeHead</param>
-                    <param id="1" name="Mode">1</param>
-                </action>
-                <action behavior="Pin" id="0" name="Pin to object" type="SnakeBody2">
-                    <param id="0" name="Pin to">SnakeBody1</param>
-                    <param id="1" name="Mode">1</param>
-                </action>
-                <action behavior="Pin" id="0" name="Pin to object" type="SnakeBody3">
-                    <param id="0" name="Pin to">SnakeBody2</param>
-                    <param id="1" name="Mode">1</param>
-                </action>
-                <action behavior="Pin" id="0" name="Pin to object" type="SnakeBody4">
-                    <param id="0" name="Pin to">SnakeBody3</param>
-                    <param id="1" name="Mode">1</param>
-                </action>
                 <action id="0" name="Set text" type="CurrentLevelText">
-                    <param id="0" name="Text">LevelCurrent</param>
+                    <param id="0" name="Text">SessionLevel</param>
                 </action>
                 <action id="-1" name="Set X" type="Building">
                     <param id="0" name="X">Random(100,600)</param>
                 </action>
+                <action behavior="Pin" id="0" name="Pin to object" type="SnakeBody1">
+                    <param id="0" name="Pin to">SnakeHead</param>
+                    <param id="1" name="Mode">3</param>
+                </action>
+                <action behavior="Pin" id="0" name="Pin to object" type="SnakeBody2">
+                    <param id="0" name="Pin to">SnakeBody1</param>
+                    <param id="1" name="Mode">3</param>
+                </action>
+                <action behavior="Pin" id="0" name="Pin to object" type="SnakeBody3">
+                    <param id="0" name="Pin to">SnakeBody2</param>
+                    <param id="1" name="Mode">3</param>
+                </action>
+                <action behavior="Pin" id="0" name="Pin to object" type="SnakeBody4">
+                    <param id="0" name="Pin to">SnakeBody3</param>
+                    <param id="1" name="Mode">3</param>
+                </action>
+                <action behavior="Pin" id="0" name="Pin to object" type="SnakeBody5">
+                    <param id="0" name="Pin to">SnakeBody4</param>
+                    <param id="1" name="Mode">3</param>
+                </action>
+                <action behavior="Pin" id="0" name="Pin to object" type="SnakeBody6">
+                    <param id="0" name="Pin to">SnakeBody5</param>
+                    <param id="1" name="Mode">3</param>
+                </action>
+                <action behavior="Pin" id="0" name="Pin to object" type="SnakeBody7">
+                    <param id="0" name="Pin to">SnakeBody6</param>
+                    <param id="1" name="Mode">3</param>
+                </action>
+                <action id="2" name="Stop" type="Barrel" />
+                <action id="-9" name="Set value" type="System">
+                    <param id="0" name="Variable">Weather</param>
+                    <param id="1" name="Value">Int(Random(1,4))-1</param>
+                </action>
             </actions>
+            <sub-events>
+                <event-block>
+                    <conditions>
+                        <condition id="-14" name="Compare variable" type="System">
+                            <param id="0" name="Variable">Weather</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-15" name="Set visible" type="Sky">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="-15" name="Set visible" type="Sky2">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                        <action id="-15" name="Set visible" type="Sky3">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                        <action id="-15" name="Set visible" type="Rain">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="-14" name="Compare variable" type="System">
+                            <param id="0" name="Variable">Weather</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-15" name="Set visible" type="Sky">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                        <action id="-15" name="Set visible" type="Sky2">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="-15" name="Set visible" type="Sky3">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                        <action id="-9" name="Destroy" type="Rain" />
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="-14" name="Compare variable" type="System">
+                            <param id="0" name="Variable">Weather</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">2</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-15" name="Set visible" type="Sky">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                        <action id="-15" name="Set visible" type="Sky2">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                        <action id="-15" name="Set visible" type="Sky3">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="-9" name="Destroy" type="Rain" />
+                    </actions>
+                </event-block>
+            </sub-events>
         </event-block>
         <event-block>
             <conditions>
                 <condition id="-1" name="Every tick" type="System" />
             </conditions>
             <actions>
-                <action id="0" name="Set text" type="Points">
-                    <param id="0" name="Text">LevelPoints</param>
+                <action id="0" name="Set text" type="SecurityDespositText">
+                    <param id="0" name="Text">SecurityDeposit</param>
                 </action>
                 <action id="-9" name="Set value" type="System">
                     <param id="0" name="Variable">GameTime</param>
@@ -73,7 +155,7 @@
                 </action>
             </actions>
         </event-block>
-        <event-group description="" title="TerrainGen2">
+        <event-group collapsed="1" description="" title="TerrainGen2">
             <sub-events>
                 <event-block>
                     <conditions>
@@ -134,7 +216,7 @@
                                         </action>
                                         <action id="-10" name="Set value" type="walls">
                                             <param id="0" name="Instance variable">RandomRoll</param>
-                                            <param id="1" name="Value">Random(1,LevelCurrent*0.01+1) -1</param>
+                                            <param id="1" name="Value">Random(1,SessionLevel*0.01+1) -1</param>
                                         </action>
                                     </actions>
                                 </event-block>
@@ -165,16 +247,12 @@
                         <action id="-9" name="Destroy" type="walls" />
                     </actions>
                 </event-block>
+                <comment>Boulder Creation</comment>
                 <event-block>
                     <conditions>
                         <condition id="-4" name="Trigger once while true" type="System" />
-                        <condition disabled="1" id="-14" name="Compare variable" type="System">
-                            <param id="0" name="Variable">gen</param>
-                            <param id="1" name="Comparison">0</param>
-                            <param id="2" name="Value">1</param>
-                        </condition>
                         <condition id="-12" name="Repeat" type="System">
-                            <param id="0" name="Count">LevelCurrent*2</param>
+                            <param id="0" name="Count">SessionLevel*2</param>
                         </condition>
                     </conditions>
                     <actions>
@@ -209,6 +287,81 @@
                                 <action id="5" name="Set frame" type="Boulder">
                                     <param id="0" name="Frame number">Int(Random(0,8))-1</param>
                                 </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>Pipe Creation</comment>
+                <event-block>
+                    <conditions>
+                        <condition id="-4" name="Trigger once while true" type="System" />
+                        <condition id="-12" name="Repeat" type="System">
+                            <param id="0" name="Count">1</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block>
+                            <conditions>
+                                <condition id="-16" name="Pick random instance" type="System">
+                                    <param id="0" name="Object">walls</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Spawn another object" type="walls">
+                                    <param id="0" name="Object">BadPipes</param>
+                                    <param id="1" name="Layer">7</param>
+                                    <param id="2" name="Image point">0</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block>
+                                    <conditions>
+                                        <condition id="0" name="On collision with another object" type="BadPipes">
+                                            <param id="0" name="Object">walls</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Destroy" type="walls" />
+                                    </actions>
+                                </event-block>
+                                <event-block>
+                                    <conditions>
+                                        <condition id="0" name="On collision with another object" type="BadPipes">
+                                            <param id="0" name="Object">Boulder</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Destroy" type="Boulder" />
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>Treasure Creation</comment>
+                <event-block>
+                    <conditions>
+                        <condition id="-4" name="Trigger once while true" type="System" />
+                        <condition id="-12" name="Repeat" type="System">
+                            <param id="0" name="Count">SessionLevel</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block>
+                            <conditions>
+                                <condition id="-16" name="Pick random instance" type="System">
+                                    <param id="0" name="Object">Boulder</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Spawn another object" type="Boulder">
+                                    <param id="0" name="Object">Treasures</param>
+                                    <param id="1" name="Layer">7</param>
+                                    <param id="2" name="Image point">0</param>
+                                </action>
+                                <action id="-9" name="Destroy" type="Boulder" />
                             </actions>
                         </event-block>
                     </sub-events>
@@ -270,7 +423,7 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-group description="" disabled="1" title="TerrainGen">
+        <event-group collapsed="1" description="" disabled="1" title="TerrainGen">
             <sub-events>
                 <event-block disabled="1">
                     <conditions>
@@ -461,6 +614,7 @@
         </event-group>
         <event-group description="" title="SnakeStuff">
             <sub-events>
+                <comment>Dealt with problem</comment>
                 <event-block>
                     <conditions>
                         <condition id="0" name="On collision with another object" type="SnakeHead">
@@ -489,7 +643,7 @@
                             <param id="1" name="Tag (optional)">&quot;&quot;</param>
                         </action>
                         <action id="-10" name="Add to" type="System">
-                            <param id="0" name="Variable">LevelPoints</param>
+                            <param id="0" name="Variable">SecurityDeposit</param>
                             <param id="1" name="Value">10</param>
                         </action>
                         <action id="-9" name="Set value" type="System">
@@ -498,6 +652,7 @@
                         </action>
                     </actions>
                 </event-block>
+                <comment>Replace nieghbors animals</comment>
                 <event-block>
                     <conditions>
                         <condition id="0" name="On collision with another object" type="SnakeHead">
@@ -526,11 +681,12 @@
                             <param id="1" name="Tag (optional)">&quot;&quot;</param>
                         </action>
                         <action id="-10" name="Add to" type="System">
-                            <param id="0" name="Variable">LevelPoints</param>
+                            <param id="0" name="Variable">SecurityDeposit</param>
                             <param id="1" name="Value">10</param>
                         </action>
                     </actions>
                 </event-block>
+                <comment>Fix nieghbors flowers</comment>
                 <event-block>
                     <conditions>
                         <condition id="0" name="On collision with another object" type="SnakeHead">
@@ -545,7 +701,7 @@
                         </action>
                         <action id="-9" name="Destroy" type="FlowersFences" />
                         <action id="-10" name="Add to" type="System">
-                            <param id="0" name="Variable">LevelPoints</param>
+                            <param id="0" name="Variable">SecurityDeposit</param>
                             <param id="1" name="Value">10</param>
                         </action>
                     </actions>
@@ -564,7 +720,7 @@
                         </action>
                         <action id="-9" name="Destroy" type="walls" />
                         <action id="-11" name="Subtract from" type="System">
-                            <param id="0" name="Variable">LevelPoints</param>
+                            <param id="0" name="Variable">SecurityDeposit</param>
                             <param id="1" name="Value">10</param>
                         </action>
                         <action id="0" name="Play" type="Audio">
@@ -575,6 +731,7 @@
                         </action>
                     </actions>
                     <sub-events>
+                        <comment>Holes in the wall, Patch them up</comment>
                         <event-block>
                             <conditions>
                                 <condition id="3" name="Compare frame" type="walls">
@@ -584,7 +741,7 @@
                             </conditions>
                             <actions>
                                 <action id="-11" name="Subtract from" type="System">
-                                    <param id="0" name="Variable">LevelPoints</param>
+                                    <param id="0" name="Variable">SecurityDeposit</param>
                                     <param id="1" name="Value">100</param>
                                 </action>
                             </actions>
@@ -600,7 +757,7 @@
                     <actions>
                         <action behavior="Fade" id="1" name="Start fade" type="Boulder" />
                         <action id="-11" name="Subtract from" type="System">
-                            <param id="0" name="Variable">LevelPoints</param>
+                            <param id="0" name="Variable">SecurityDeposit</param>
                             <param id="1" name="Value">100</param>
                         </action>
                     </actions>
@@ -619,7 +776,7 @@
                         </action>
                         <action id="-9" name="Destroy" type="Soils" />
                         <action id="-11" name="Subtract from" type="System">
-                            <param id="0" name="Variable">LevelPoints</param>
+                            <param id="0" name="Variable">SecurityDeposit</param>
                             <param id="1" name="Value">10</param>
                         </action>
                         <action id="0" name="Play" type="Audio">
@@ -646,9 +803,6 @@
                                 </condition>
                             </conditions>
                             <actions>
-                                <action behavior="Physics" id="21" name="Set immovable" type="SnakeHead">
-                                    <param id="0" name="Setting">0</param>
-                                </action>
                                 <action id="-2" name="Set Y" type="SnakeHead">
                                     <param id="0" name="Y">Lerp(Self.Y, SolidGround.Y,0.5)</param>
                                 </action>
@@ -672,9 +826,6 @@
                                 </condition>
                             </conditions>
                             <actions>
-                                <action behavior="Physics" disabled="1" id="21" name="Set immovable" type="SnakeHead">
-                                    <param id="0" name="Setting">0</param>
-                                </action>
                                 <action id="-2" name="Set Y" type="SnakeHead">
                                     <param id="0" name="Y">Self.Y+3</param>
                                 </action>
@@ -687,22 +838,19 @@
                                     <param id="1" name="Y co-ordinate">175</param>
                                 </condition>
                             </conditions>
-                            <actions>
-                                <action behavior="Physics" id="21" name="Set immovable" type="SnakeHead">
-                                    <param id="0" name="Setting">1</param>
-                                </action>
-                            </actions>
+                            <actions />
                         </event-block>
                     </sub-events>
                 </event-block>
-                <event-block>
+                <event-block disabled="1">
                     <conditions>
-                        <condition id="-6" name="Every X seconds" type="System">
+                        <condition disabled="1" id="-6" name="Every X seconds" type="System">
                             <param id="0" name="Interval (seconds)">0.05</param>
                         </condition>
-                        <condition id="2" name="Mouse button is down" type="Mouse">
+                        <condition disabled="1" id="2" name="Mouse button is down" type="Mouse">
                             <param id="0" name="Mouse button">0</param>
                         </condition>
+                        <condition id="-1" name="Every tick" type="System" />
                     </conditions>
                     <actions>
                         <action id="-22" name="Set angle toward position" type="SnakeBody1">
@@ -723,10 +871,143 @@
                         </action>
                     </actions>
                 </event-block>
+                <event-block disabled="1">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" type="System">
+                            <param id="0" name="First value">Distance(SnakeBody1.X,SnakeBody1.Y, SnakeHead.X, SnakeHEad.Y)</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Second value">20</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-23" name="Move at angle" type="SnakeBody1">
+                            <param id="0" name="Angle">SnakeBody1.Angle</param>
+                            <param id="1" name="Distance">SnakeHead.Speed</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block disabled="1">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" type="System">
+                            <param id="0" name="First value">Distance(SnakeBody2.X,SnakeBody2.Y, SnakeBody1.ImagePointX(&quot;Tail&quot;), SnakeBody1.ImagePointY(&quot;Tail&quot;))</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Second value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-23" name="Move at angle" type="SnakeBody2">
+                            <param id="0" name="Angle">SnakeBody2.Angle</param>
+                            <param id="1" name="Distance">SnakeHead.Speed</param>
+                        </action>
+                    </actions>
+                </event-block>
             </sub-events>
         </event-group>
-        <event-group description="" title="SoundEffectThings">
+        <event-group collapsed="1" description="" title="MoreEffects">
             <sub-events>
+                <event-block>
+                    <conditions>
+                        <condition id="4" name="On finished" type="BarrelBomb">
+                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" type="BarrelBomb" />
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="0" name="On collision with another object" type="SnakeHead">
+                            <param id="0" name="Object">Barrel</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="3" name="Start" type="Barrel">
+                            <param id="0" name="From">1</param>
+                        </action>
+                        <action id="-13" name="Set boolean" type="Barrel">
+                            <param id="0" name="Instance variable">IsSploding</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="-8" name="Is boolean instance variable set" type="Barrel">
+                            <param id="0" name="Instance variable">IsSploding</param>
+                        </condition>
+                        <condition id="-6" name="Every X seconds" type="System">
+                            <param id="0" name="Interval (seconds)">1.0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-12" name="Subtract from" type="Barrel">
+                            <param id="0" name="Instance variable">Timer</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" type="Barrel">
+                            <param id="0" name="Instance variable">Timer</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" type="Barrel" />
+                        <action id="0" name="Play" type="Audio">
+                            <param id="0" name="Audio file">ExplosionDerez</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block>
+                            <conditions>
+                                <condition id="-12" name="Repeat" type="System">
+                                    <param id="0" name="Count">10</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Spawn another object" type="Barrel">
+                                    <param id="0" name="Object">BarrelBomb</param>
+                                    <param id="1" name="Layer">69</param>
+                                    <param id="2" name="Image point">0</param>
+                                </action>
+                                <action id="-3" name="Set position" type="BarrelBomb">
+                                    <param id="0" name="X">Self.X+Random(-50,50)</param>
+                                    <param id="1" name="Y">Self.Y+Random(-50,50)</param>
+                                </action>
+                                <action id="9" name="Set scale" type="BarrelBomb">
+                                    <param id="0" name="Scale">Random(0.5,0.25)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>Noise Complaint</comment>
+                <event-block>
+                    <conditions>
+                        <condition id="0" name="On collision with another object" type="BarrelBomb">
+                            <param id="0" name="Object">walls</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" type="walls" />
+                        <action id="-11" name="Subtract from" type="System">
+                            <param id="0" name="Variable">SecurityDeposit</param>
+                            <param id="1" name="Value">1000</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group collapsed="1" description="" title="SoundEffectThings">
+            <sub-events>
+                <comment>Damage to Apartment</comment>
                 <event-block>
                     <conditions>
                         <condition id="0" name="On collision with another object" type="SoundWave">
@@ -738,7 +1019,7 @@
                             <param id="0" name="Object to create">ApartmentDebris</param>
                             <param id="1" name="Layer">2</param>
                             <param id="2" name="X">Random(400,650)</param>
-                            <param id="3" name="Y">1090</param>
+                            <param id="3" name="Y">1060</param>
                         </action>
                         <action id="0" name="Spawn another object" type="SnakeHead">
                             <param id="0" name="Object">EXCLAIM</param>
@@ -755,8 +1036,8 @@
                             <param id="0" name="Angle">Random(-10,10)</param>
                         </action>
                         <action id="-11" name="Subtract from" type="System">
-                            <param id="0" name="Variable">LevelPoints</param>
-                            <param id="1" name="Value">10</param>
+                            <param id="0" name="Variable">SecurityDeposit</param>
+                            <param id="1" name="Value">10*SessionLevel</param>
                         </action>
                     </actions>
                 </event-block>
@@ -830,7 +1111,7 @@
                 <event-block disabled="1">
                     <conditions>
                         <condition id="-6" name="Every X seconds" type="System">
-                            <param id="0" name="Interval (seconds)">Random(1,3)/LevelCurrent</param>
+                            <param id="0" name="Interval (seconds)">Random(1,3)/SessionLevel</param>
                         </condition>
                         <condition id="-16" name="Pick random instance" type="System">
                             <param id="0" name="Object">Human</param>
@@ -904,16 +1185,11 @@
                         <condition id="2" inverted="1" name="Mouse button is down" type="Mouse">
                             <param id="0" name="Mouse button">0</param>
                         </condition>
-                        <condition id="-7" name="Compare instance variable" type="SnakeHead">
-                            <param id="0" name="Instance variable">Speed</param>
-                            <param id="1" name="Comparison">4</param>
-                            <param id="2" name="Value">0</param>
-                        </condition>
                     </conditions>
                     <actions>
-                        <action id="-12" name="Subtract from" type="SnakeHead">
+                        <action id="-10" name="Set value" type="SnakeHead">
                             <param id="0" name="Instance variable">Speed</param>
-                            <param id="1" name="Value">0.25</param>
+                            <param id="1" name="Value">0</param>
                         </action>
                     </actions>
                 </event-block>
@@ -991,55 +1267,6 @@
                     <param id="1" name="dB">-Distance(SnakeHead.X, Snakehead.Y, ApartMentArea.X, ApartmentArea.Y)/20</param>
                 </action>
             </actions>
-            <sub-events>
-                <event-block disabled="1">
-                    <conditions>
-                        <condition id="-2" name="Compare Y" type="SnakeHead">
-                            <param id="0" name="Comparison">2</param>
-                            <param id="1" name="Y co-ordinate">600</param>
-                        </condition>
-                    </conditions>
-                    <actions />
-                </event-block>
-                <event-block disabled="1">
-                    <conditions>
-                        <condition id="-2" name="Compare Y" type="SnakeHead">
-                            <param id="0" name="Comparison">5</param>
-                            <param id="1" name="Y co-ordinate">600</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="3" name="Set volume" type="Audio">
-                            <param id="0" name="Tag">&quot;Thump&quot;</param>
-                            <param id="1" name="dB">-20</param>
-                        </action>
-                        <action id="3" name="Set volume" type="Audio">
-                            <param id="0" name="Tag">&quot;BGMusic&quot;</param>
-                            <param id="1" name="dB">0</param>
-                        </action>
-                    </actions>
-                </event-block>
-            </sub-events>
-        </event-block>
-        <event-block>
-            <conditions>
-                <condition id="-8" name="Compare two values" type="System">
-                    <param id="0" name="First value">Human.Count</param>
-                    <param id="1" name="Comparison">3</param>
-                    <param id="2" name="Second value">0</param>
-                </condition>
-                <condition id="-8" name="Compare two values" type="System">
-                    <param id="0" name="First value">LevelPoints</param>
-                    <param id="1" name="Comparison">5</param>
-                    <param id="2" name="Second value">TotalScore</param>
-                </condition>
-            </conditions>
-            <actions>
-                <action id="0" name="Set local value" type="WebStorage">
-                    <param id="0" name="Key">&quot;HighScore&quot;</param>
-                    <param id="1" name="Value">LevelPoints</param>
-                </action>
-            </actions>
         </event-block>
         <event-block>
             <conditions>
@@ -1051,8 +1278,8 @@
                 <action id="-3" name="Create object" type="System">
                     <param id="0" name="Object to create">MusicaNote</param>
                     <param id="1" name="Layer">6</param>
-                    <param id="2" name="X">512+random(-50,50)</param>
-                    <param id="3" name="Y">1232+random(-50,10)</param>
+                    <param id="2" name="X">572+random(-50,50)</param>
+                    <param id="3" name="Y">1190+random(-50,10)</param>
                 </action>
                 <action id="5" name="Set frame" type="MusicaNote">
                     <param id="0" name="Frame number">Int(Random(1,2))-1</param>
@@ -1145,7 +1372,7 @@
         <event-block>
             <conditions>
                 <condition id="-14" name="Compare variable" type="System">
-                    <param id="0" name="Variable">LevelPoints</param>
+                    <param id="0" name="Variable">SecurityDeposit</param>
                     <param id="1" name="Comparison">3</param>
                     <param id="2" name="Value">0</param>
                 </condition>
@@ -1154,10 +1381,10 @@
                 <action id="-15" name="Set visible" type="EVICTED">
                     <param id="0" name="Visibility">1</param>
                 </action>
-                <action id="-16" name="Wait" type="System">
+                <action disabled="1" id="-16" name="Wait" type="System">
                     <param id="0" name="Seconds">5</param>
                 </action>
-                <action id="-2" name="Go to layout" type="System">
+                <action disabled="1" id="-2" name="Go to layout" type="System">
                     <param id="0" name="Layout">StartScreen</param>
                 </action>
             </actions>
@@ -1168,8 +1395,49 @@
             </conditions>
             <actions>
                 <action id="-9" name="Set value" type="System">
-                    <param id="0" name="Variable">SessionScore</param>
-                    <param id="1" name="Value">LevelPoints</param>
+                    <param id="0" name="Variable">HighScore</param>
+                    <param id="1" name="Value">SecurityDeposit</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="0" name="On collision with another object" type="SnakeHead">
+                    <param id="0" name="Object">Building</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-12" name="Subtract from" type="Building">
+                    <param id="0" name="Instance variable">Health</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action behavior="ScrollTo" id="0" name="Shake" type="ApartmentArea">
+                    <param id="0" name="Magnitude">20</param>
+                    <param id="1" name="Duration">0.4</param>
+                    <param id="2" name="Mode">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="-7" name="Compare instance variable" type="Building">
+                    <param id="0" name="Instance variable">Health</param>
+                    <param id="1" name="Comparison">3</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Spawn another object" type="Building">
+                    <param id="0" name="Object">boooom</param>
+                    <param id="1" name="Layer">9</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+                <action id="-9" name="Destroy" type="Building" />
+                <action id="0" name="Play" type="Audio">
+                    <param id="0" name="Audio file">ExplosionDerez</param>
+                    <param id="2" name="Loop">0</param>
+                    <param id="3" name="Volume">0</param>
+                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
                 </action>
             </actions>
         </event-block>

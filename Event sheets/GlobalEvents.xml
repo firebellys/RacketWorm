@@ -3,6 +3,7 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>GlobalEvents</name>
     <events>
+        <variable constant="0" name="IsMobile" static="0" type="number">1</variable>
         <variable constant="0" name="SessionHighScore" static="0" type="number">0</variable>
         <variable constant="0" name="SessionLevel" static="0" type="number">1</variable>
         <variable constant="0" name="HighScore" static="0" type="number">0</variable>
@@ -24,14 +25,20 @@
                 <action id="4" name="Preload" type="Audio">
                     <param id="0" name="Audio file">Scream</param>
                 </action>
-                <action id="0" name="Play" type="Audio">
-                    <param id="0" name="Audio file">DEATH WORM</param>
-                    <param id="2" name="Loop">0</param>
-                    <param id="3" name="Volume">0</param>
-                    <param id="1" name="Tag (optional)">&quot;BGMusic&quot;</param>
-                </action>
                 <action id="4" name="Preload" type="Audio">
                     <param id="0" name="Audio file">ExplosionDerez</param>
+                </action>
+                <action id="4" name="Preload" type="Audio">
+                    <param id="0" name="Audio file">CoinThree</param>
+                </action>
+                <action id="4" name="Preload" type="Audio">
+                    <param id="0" name="Audio file">SwitchWooden</param>
+                </action>
+                <action id="4" name="Preload" type="Audio">
+                    <param id="0" name="Audio file">SlamCooltree</param>
+                </action>
+                <action id="4" name="Preload" type="Audio">
+                    <param id="0" name="Audio file">PickupDull</param>
                 </action>
             </actions>
         </event-block>

@@ -11,7 +11,7 @@
         <variable comment="StartingCAsh" constant="0" name="SecurityDeposit" static="0" type="number">10000</variable>
         <variable comment="launch a generation" constant="0" name="gen" static="0" type="number">2</variable>
         <variable comment="PickTheWeather" constant="0" name="Weather" static="0" type="number">0</variable>
-        <event-block collapsed="1">
+        <event-block>
             <conditions>
                 <condition id="-2" name="On start of layout" type="System" />
             </conditions>
@@ -22,12 +22,6 @@
                 </action>
                 <action id="0" name="Set text" type="SecurityDespositText">
                     <param id="0" name="Text">SecurityDeposit</param>
-                </action>
-                <action disabled="1" id="0" name="Play" type="Audio">
-                    <param id="0" name="Audio file">DEATH WORM</param>
-                    <param id="2" name="Loop">1</param>
-                    <param id="3" name="Volume">-20</param>
-                    <param id="1" name="Tag (optional)">&quot;BGMusic&quot;</param>
                 </action>
                 <action id="-9" name="Set value" type="System">
                     <param id="0" name="Variable">GameTime</param>
@@ -71,6 +65,10 @@
                 <action id="-9" name="Set value" type="System">
                     <param id="0" name="Variable">Weather</param>
                     <param id="1" name="Value">Int(Random(1,4))-1</param>
+                </action>
+                <action id="-9" name="Set value" type="System">
+                    <param id="0" name="Variable">Chaos</param>
+                    <param id="1" name="Value">0</param>
                 </action>
             </actions>
             <sub-events>
@@ -155,7 +153,7 @@
                 </action>
             </actions>
         </event-block>
-        <event-group collapsed="1" description="" title="TerrainGen2">
+        <event-group description="" title="TerrainGen2">
             <sub-events>
                 <event-block>
                     <conditions>
@@ -423,7 +421,7 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-group collapsed="1" description="" disabled="1" title="TerrainGen">
+        <event-group description="" disabled="1" title="TerrainGen">
             <sub-events>
                 <event-block disabled="1">
                     <conditions>
@@ -621,36 +619,94 @@
                             <param id="0" name="Object">Human</param>
                         </condition>
                     </conditions>
-                    <actions>
-                        <action id="0" name="Spawn another object" type="Human">
-                            <param id="0" name="Object">Gore</param>
-                            <param id="1" name="Layer">6</param>
-                            <param id="2" name="Image point">0</param>
-                        </action>
-                        <action id="0" name="Spawn another object" type="Human">
-                            <param id="0" name="Object">Blood</param>
-                            <param id="1" name="Layer">6</param>
-                            <param id="2" name="Image point">0</param>
-                        </action>
-                        <action id="-8" name="Set angle" type="Gore">
-                            <param id="0" name="Angle">270</param>
-                        </action>
-                        <action id="-9" name="Destroy" type="Human" />
-                        <action id="0" name="Play" type="Audio">
-                            <param id="0" name="Audio file">Splat</param>
-                            <param id="2" name="Loop">0</param>
-                            <param id="3" name="Volume">-20</param>
-                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
-                        </action>
-                        <action id="-10" name="Add to" type="System">
-                            <param id="0" name="Variable">SecurityDeposit</param>
-                            <param id="1" name="Value">10</param>
-                        </action>
-                        <action id="-9" name="Set value" type="System">
-                            <param id="0" name="Variable">Chaos</param>
-                            <param id="1" name="Value">1</param>
-                        </action>
-                    </actions>
+                    <actions />
+                    <sub-events>
+                        <event-block>
+                            <conditions>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">IsMobile</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Spawn another object" type="Human">
+                                    <param id="0" name="Object">Gore</param>
+                                    <param id="1" name="Layer">6</param>
+                                    <param id="2" name="Image point">0</param>
+                                </action>
+                                <action id="0" name="Spawn another object" type="Human">
+                                    <param id="0" name="Object">Blood</param>
+                                    <param id="1" name="Layer">6</param>
+                                    <param id="2" name="Image point">0</param>
+                                </action>
+                                <action id="-8" name="Set angle" type="Gore">
+                                    <param id="0" name="Angle">270</param>
+                                </action>
+                                <action id="-9" name="Destroy" type="Human" />
+                                <action id="0" name="Play" type="Audio">
+                                    <param id="0" name="Audio file">Splat</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">-20</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                                <action id="-10" name="Add to" type="System">
+                                    <param id="0" name="Variable">SecurityDeposit</param>
+                                    <param id="1" name="Value">10</param>
+                                </action>
+                                <action id="-9" name="Set value" type="System">
+                                    <param id="0" name="Variable">Chaos</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="-3" name="Create object" type="System">
+                                    <param id="0" name="Object to create">SecurityDespositChange</param>
+                                    <param id="1" name="Layer">9</param>
+                                    <param id="2" name="X">499</param>
+                                    <param id="3" name="Y">37</param>
+                                </action>
+                                <action id="0" name="Set text" type="SecurityDespositChange">
+                                    <param id="0" name="Text">&quot;+10&quot;</param>
+                                </action>
+                                <action id="4" name="Set font color" type="SecurityDespositChange">
+                                    <param id="0" name="Color">rgb(0, 200, 0)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="-22" name="Else" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Destroy" type="Human" />
+                                <action id="0" name="Play" type="Audio">
+                                    <param id="0" name="Audio file">Splat</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">-20</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                                <action id="-10" name="Add to" type="System">
+                                    <param id="0" name="Variable">SecurityDeposit</param>
+                                    <param id="1" name="Value">10</param>
+                                </action>
+                                <action id="-9" name="Set value" type="System">
+                                    <param id="0" name="Variable">Chaos</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="-3" name="Create object" type="System">
+                                    <param id="0" name="Object to create">SecurityDespositChange</param>
+                                    <param id="1" name="Layer">9</param>
+                                    <param id="2" name="X">499</param>
+                                    <param id="3" name="Y">37</param>
+                                </action>
+                                <action id="0" name="Set text" type="SecurityDespositChange">
+                                    <param id="0" name="Text">&quot;+10&quot;</param>
+                                </action>
+                                <action id="4" name="Set font color" type="SecurityDespositChange">
+                                    <param id="0" name="Color">rgb(0, 200, 0)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
                 </event-block>
                 <comment>Replace nieghbors animals</comment>
                 <event-block>
@@ -659,32 +715,86 @@
                             <param id="0" name="Object">Animal</param>
                         </condition>
                     </conditions>
-                    <actions>
-                        <action id="0" name="Spawn another object" type="Animal">
-                            <param id="0" name="Object">Gore</param>
-                            <param id="1" name="Layer">6</param>
-                            <param id="2" name="Image point">0</param>
-                        </action>
-                        <action id="0" name="Spawn another object" type="Animal">
-                            <param id="0" name="Object">Blood</param>
-                            <param id="1" name="Layer">6</param>
-                            <param id="2" name="Image point">0</param>
-                        </action>
-                        <action id="-8" name="Set angle" type="Gore">
-                            <param id="0" name="Angle">270</param>
-                        </action>
-                        <action id="-9" name="Destroy" type="Animal" />
-                        <action id="0" name="Play" type="Audio">
-                            <param id="0" name="Audio file">Splat</param>
-                            <param id="2" name="Loop">0</param>
-                            <param id="3" name="Volume">-20</param>
-                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
-                        </action>
-                        <action id="-10" name="Add to" type="System">
-                            <param id="0" name="Variable">SecurityDeposit</param>
-                            <param id="1" name="Value">10</param>
-                        </action>
-                    </actions>
+                    <actions />
+                    <sub-events>
+                        <event-block>
+                            <conditions>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">IsMobile</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Spawn another object" type="Animal">
+                                    <param id="0" name="Object">Gore</param>
+                                    <param id="1" name="Layer">6</param>
+                                    <param id="2" name="Image point">0</param>
+                                </action>
+                                <action id="0" name="Spawn another object" type="Animal">
+                                    <param id="0" name="Object">Blood</param>
+                                    <param id="1" name="Layer">6</param>
+                                    <param id="2" name="Image point">0</param>
+                                </action>
+                                <action id="-8" name="Set angle" type="Gore">
+                                    <param id="0" name="Angle">270</param>
+                                </action>
+                                <action id="-9" name="Destroy" type="Animal" />
+                                <action id="0" name="Play" type="Audio">
+                                    <param id="0" name="Audio file">Splat</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">-20</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                                <action id="-10" name="Add to" type="System">
+                                    <param id="0" name="Variable">SecurityDeposit</param>
+                                    <param id="1" name="Value">10</param>
+                                </action>
+                                <action id="-3" name="Create object" type="System">
+                                    <param id="0" name="Object to create">SecurityDespositChange</param>
+                                    <param id="1" name="Layer">9</param>
+                                    <param id="2" name="X">499</param>
+                                    <param id="3" name="Y">37</param>
+                                </action>
+                                <action id="0" name="Set text" type="SecurityDespositChange">
+                                    <param id="0" name="Text">&quot;+10&quot;</param>
+                                </action>
+                                <action id="4" name="Set font color" type="SecurityDespositChange">
+                                    <param id="0" name="Color">rgb(0, 200, 0)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="-22" name="Else" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Destroy" type="Animal" />
+                                <action id="0" name="Play" type="Audio">
+                                    <param id="0" name="Audio file">Splat</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">-20</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                                <action id="-10" name="Add to" type="System">
+                                    <param id="0" name="Variable">SecurityDeposit</param>
+                                    <param id="1" name="Value">10</param>
+                                </action>
+                                <action id="-3" name="Create object" type="System">
+                                    <param id="0" name="Object to create">SecurityDespositChange</param>
+                                    <param id="1" name="Layer">9</param>
+                                    <param id="2" name="X">499</param>
+                                    <param id="3" name="Y">37</param>
+                                </action>
+                                <action id="0" name="Set text" type="SecurityDespositChange">
+                                    <param id="0" name="Text">&quot;+10&quot;</param>
+                                </action>
+                                <action id="4" name="Set font color" type="SecurityDespositChange">
+                                    <param id="0" name="Color">rgb(0, 200, 0)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
                 </event-block>
                 <comment>Fix nieghbors flowers</comment>
                 <event-block>
@@ -704,6 +814,18 @@
                             <param id="0" name="Variable">SecurityDeposit</param>
                             <param id="1" name="Value">10</param>
                         </action>
+                        <action id="-3" name="Create object" type="System">
+                            <param id="0" name="Object to create">SecurityDespositChange</param>
+                            <param id="1" name="Layer">9</param>
+                            <param id="2" name="X">499</param>
+                            <param id="3" name="Y">37</param>
+                        </action>
+                        <action id="0" name="Set text" type="SecurityDespositChange">
+                            <param id="0" name="Text">&quot;+10&quot;</param>
+                        </action>
+                        <action id="4" name="Set font color" type="SecurityDespositChange">
+                            <param id="0" name="Color">rgb(0, 200, 0)</param>
+                        </action>
                     </actions>
                 </event-block>
                 <event-block>
@@ -713,11 +835,6 @@
                         </condition>
                     </conditions>
                     <actions>
-                        <action id="0" name="Spawn another object" type="walls">
-                            <param id="0" name="Object">DirtDebris</param>
-                            <param id="1" name="Layer">5</param>
-                            <param id="2" name="Image point">0</param>
-                        </action>
                         <action id="-9" name="Destroy" type="walls" />
                         <action id="-11" name="Subtract from" type="System">
                             <param id="0" name="Variable">SecurityDeposit</param>
@@ -728,6 +845,18 @@
                             <param id="2" name="Loop">0</param>
                             <param id="3" name="Volume">-20</param>
                             <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                        <action id="-3" name="Create object" type="System">
+                            <param id="0" name="Object to create">SecurityDespositChange</param>
+                            <param id="1" name="Layer">9</param>
+                            <param id="2" name="X">499</param>
+                            <param id="3" name="Y">37</param>
+                        </action>
+                        <action id="0" name="Set text" type="SecurityDespositChange">
+                            <param id="0" name="Text">&quot;-10&quot;</param>
+                        </action>
+                        <action id="4" name="Set font color" type="SecurityDespositChange">
+                            <param id="0" name="Color">rgb(200, 0, 0)</param>
                         </action>
                     </actions>
                     <sub-events>
@@ -746,6 +875,22 @@
                                 </action>
                             </actions>
                         </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">IsMobile</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Spawn another object" type="walls">
+                                    <param id="0" name="Object">DirtDebris</param>
+                                    <param id="1" name="Layer">5</param>
+                                    <param id="2" name="Image point">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
                     </sub-events>
                 </event-block>
                 <event-block>
@@ -760,6 +905,18 @@
                             <param id="0" name="Variable">SecurityDeposit</param>
                             <param id="1" name="Value">100</param>
                         </action>
+                        <action id="-3" name="Create object" type="System">
+                            <param id="0" name="Object to create">SecurityDespositChange</param>
+                            <param id="1" name="Layer">9</param>
+                            <param id="2" name="X">499</param>
+                            <param id="3" name="Y">37</param>
+                        </action>
+                        <action id="0" name="Set text" type="SecurityDespositChange">
+                            <param id="0" name="Text">&quot;-100&quot;</param>
+                        </action>
+                        <action id="4" name="Set font color" type="SecurityDespositChange">
+                            <param id="0" name="Color">rgb(200, 0, 0)</param>
+                        </action>
                     </actions>
                 </event-block>
                 <event-block>
@@ -768,24 +925,54 @@
                             <param id="0" name="Object">Soils</param>
                         </condition>
                     </conditions>
-                    <actions>
-                        <action id="0" name="Spawn another object" type="Soils">
-                            <param id="0" name="Object">DirtDebris</param>
-                            <param id="1" name="Layer">5</param>
-                            <param id="2" name="Image point">0</param>
-                        </action>
-                        <action id="-9" name="Destroy" type="Soils" />
-                        <action id="-11" name="Subtract from" type="System">
-                            <param id="0" name="Variable">SecurityDeposit</param>
-                            <param id="1" name="Value">10</param>
-                        </action>
-                        <action id="0" name="Play" type="Audio">
-                            <param id="0" name="Audio file">DirtChomp</param>
-                            <param id="2" name="Loop">0</param>
-                            <param id="3" name="Volume">-20</param>
-                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
-                        </action>
-                    </actions>
+                    <actions />
+                    <sub-events>
+                        <event-block>
+                            <conditions>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">IsMobile</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Spawn another object" type="Soils">
+                                    <param id="0" name="Object">DirtDebris</param>
+                                    <param id="1" name="Layer">5</param>
+                                    <param id="2" name="Image point">0</param>
+                                </action>
+                                <action id="-9" name="Destroy" type="Soils" />
+                                <action id="-11" name="Subtract from" type="System">
+                                    <param id="0" name="Variable">SecurityDeposit</param>
+                                    <param id="1" name="Value">10</param>
+                                </action>
+                                <action id="0" name="Play" type="Audio">
+                                    <param id="0" name="Audio file">DirtChomp</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">-20</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="-22" name="Else" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Destroy" type="Soils" />
+                                <action id="-11" name="Subtract from" type="System">
+                                    <param id="0" name="Variable">SecurityDeposit</param>
+                                    <param id="1" name="Value">10</param>
+                                </action>
+                                <action id="0" name="Play" type="Audio">
+                                    <param id="0" name="Audio file">DirtChomp</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">-20</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
                 </event-block>
                 <event-block>
                     <conditions>
@@ -903,7 +1090,7 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-group collapsed="1" description="" title="MoreEffects">
+        <event-group description="" title="MoreEffects">
             <sub-events>
                 <event-block>
                     <conditions>
@@ -928,6 +1115,12 @@
                         <action id="-13" name="Set boolean" type="Barrel">
                             <param id="0" name="Instance variable">IsSploding</param>
                             <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="0" name="Play" type="Audio">
+                            <param id="0" name="Audio file">FailBuzzer</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
                         </action>
                     </actions>
                 </event-block>
@@ -1005,7 +1198,7 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-group collapsed="1" description="" title="SoundEffectThings">
+        <event-group description="" title="SoundEffectThings">
             <sub-events>
                 <comment>Damage to Apartment</comment>
                 <event-block>
@@ -1014,32 +1207,69 @@
                             <param id="0" name="Object">ApartmentArea</param>
                         </condition>
                     </conditions>
-                    <actions>
-                        <action id="-3" name="Create object" type="System">
-                            <param id="0" name="Object to create">ApartmentDebris</param>
-                            <param id="1" name="Layer">2</param>
-                            <param id="2" name="X">Random(400,650)</param>
-                            <param id="3" name="Y">1060</param>
-                        </action>
-                        <action id="0" name="Spawn another object" type="SnakeHead">
-                            <param id="0" name="Object">EXCLAIM</param>
-                            <param id="1" name="Layer">8</param>
-                            <param id="2" name="Image point">0</param>
-                        </action>
-                        <action id="-2" name="Set Y" type="EXCLAIM">
-                            <param id="0" name="Y">Self.Y-50</param>
-                        </action>
-                        <action id="-1" name="Set X" type="EXCLAIM">
-                            <param id="0" name="X">Self.X+Random(-20,20)</param>
-                        </action>
-                        <action id="-8" name="Set angle" type="EXCLAIM">
-                            <param id="0" name="Angle">Random(-10,10)</param>
-                        </action>
-                        <action id="-11" name="Subtract from" type="System">
-                            <param id="0" name="Variable">SecurityDeposit</param>
-                            <param id="1" name="Value">10*SessionLevel</param>
-                        </action>
-                    </actions>
+                    <actions />
+                    <sub-events>
+                        <event-block>
+                            <conditions>
+                                <condition id="-14" name="Compare variable" type="System">
+                                    <param id="0" name="Variable">IsMobile</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-3" name="Create object" type="System">
+                                    <param id="0" name="Object to create">ApartmentDebris</param>
+                                    <param id="1" name="Layer">2</param>
+                                    <param id="2" name="X">Random(400,650)</param>
+                                    <param id="3" name="Y">1060</param>
+                                </action>
+                                <action id="0" name="Spawn another object" type="SnakeHead">
+                                    <param id="0" name="Object">exclaimSprite</param>
+                                    <param id="1" name="Layer">9</param>
+                                    <param id="2" name="Image point">0</param>
+                                </action>
+                                <action id="-2" name="Set Y" type="exclaimSprite">
+                                    <param id="0" name="Y">Self.Y-50</param>
+                                </action>
+                                <action id="-1" name="Set X" type="exclaimSprite">
+                                    <param id="0" name="X">Self.X+Random(-20,20)</param>
+                                </action>
+                                <action id="-8" name="Set angle" type="exclaimSprite">
+                                    <param id="0" name="Angle">Random(-10,10)</param>
+                                </action>
+                                <action id="-11" name="Subtract from" type="System">
+                                    <param id="0" name="Variable">SecurityDeposit</param>
+                                    <param id="1" name="Value">10*SessionLevel</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="-22" name="Else" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Spawn another object" type="SnakeHead">
+                                    <param id="0" name="Object">exclaimSprite</param>
+                                    <param id="1" name="Layer">9</param>
+                                    <param id="2" name="Image point">0</param>
+                                </action>
+                                <action id="-2" name="Set Y" type="exclaimSprite">
+                                    <param id="0" name="Y">Self.Y-50</param>
+                                </action>
+                                <action id="-1" name="Set X" type="exclaimSprite">
+                                    <param id="0" name="X">Self.X+Random(-20,20)</param>
+                                </action>
+                                <action id="-8" name="Set angle" type="exclaimSprite">
+                                    <param id="0" name="Angle">Random(-10,10)</param>
+                                </action>
+                                <action id="-11" name="Subtract from" type="System">
+                                    <param id="0" name="Variable">SecurityDeposit</param>
+                                    <param id="1" name="Value">10*SessionLevel</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
                 </event-block>
                 <event-block>
                     <conditions>
@@ -1146,6 +1376,30 @@
             <sub-events>
                 <event-block>
                     <conditions>
+                        <condition id="0" name="On any touch start" type="Touch" />
+                        <condition id="-2" name="Compare Y" type="SnakeHead">
+                            <param id="0" name="Comparison">4</param>
+                            <param id="1" name="Y co-ordinate">175</param>
+                        </condition>
+                        <condition id="-8" name="Compare two values" type="System">
+                            <param id="0" name="First value">Distance(Mouse.x,Mouse.Y, Snakehead.x, Snakehead.Y)</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Second value">5</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-23" name="Move at angle" type="SnakeHead">
+                            <param id="0" name="Angle">Angle(snakehead.X,snakehead.Y,touch.X, touch.Y)</param>
+                            <param id="1" name="Distance">SnakeHead.Speed</param>
+                        </action>
+                        <action id="-22" name="Set angle toward position" type="SnakeHead">
+                            <param id="0" name="X">Touch.X</param>
+                            <param id="1" name="Y">Touch.Y</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
                         <condition id="3" name="Is button down" type="Gamepad">
                             <param id="0" name="Gamepad">0</param>
                             <param id="1" name="Button">14</param>
@@ -1180,11 +1434,12 @@
                     </conditions>
                     <actions />
                 </event-block>
-                <event-block>
+                <event-block any="1">
                     <conditions>
                         <condition id="2" inverted="1" name="Mouse button is down" type="Mouse">
                             <param id="0" name="Mouse button">0</param>
                         </condition>
+                        <condition id="1" name="On any touch end" type="Touch" />
                     </conditions>
                     <actions>
                         <action id="-10" name="Set value" type="SnakeHead">
@@ -1411,10 +1666,11 @@
                     <param id="0" name="Instance variable">Health</param>
                     <param id="1" name="Value">1</param>
                 </action>
-                <action behavior="ScrollTo" id="0" name="Shake" type="ApartmentArea">
-                    <param id="0" name="Magnitude">20</param>
-                    <param id="1" name="Duration">0.4</param>
-                    <param id="2" name="Mode">0</param>
+                <action id="0" name="Play" type="Audio">
+                    <param id="0" name="Audio file">PickupDull</param>
+                    <param id="2" name="Loop">0</param>
+                    <param id="3" name="Volume">0</param>
+                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
                 </action>
             </actions>
         </event-block>
@@ -1428,6 +1684,14 @@
             </conditions>
             <actions>
                 <action id="0" name="Spawn another object" type="Building">
+                    <param id="0" name="Object">BuildingWood</param>
+                    <param id="1" name="Layer">9</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+                <action id="-8" name="Set angle" type="BuildingWood">
+                    <param id="0" name="Angle">270</param>
+                </action>
+                <action id="0" name="Spawn another object" type="Building">
                     <param id="0" name="Object">boooom</param>
                     <param id="1" name="Layer">9</param>
                     <param id="2" name="Image point">0</param>
@@ -1438,6 +1702,63 @@
                     <param id="2" name="Loop">0</param>
                     <param id="3" name="Volume">0</param>
                     <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+                <action id="-3" name="Create object" type="System">
+                    <param id="0" name="Object to create">SecurityDespositChange</param>
+                    <param id="1" name="Layer">9</param>
+                    <param id="2" name="X">499</param>
+                    <param id="3" name="Y">37</param>
+                </action>
+                <action id="0" name="Set text" type="SecurityDespositChange">
+                    <param id="0" name="Text">&quot;+1000&quot;</param>
+                </action>
+                <action id="4" name="Set font color" type="SecurityDespositChange">
+                    <param id="0" name="Color">rgb(0, 200, 0)</param>
+                </action>
+                <action id="-10" name="Add to" type="System">
+                    <param id="0" name="Variable">SecurityDeposit</param>
+                    <param id="1" name="Value">1000</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="0" name="On collision with another object" type="SnakeHead">
+                    <param id="0" name="Object">Treasures</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Spawn another object" type="Treasures">
+                    <param id="0" name="Object">moneySignparticles</param>
+                    <param id="1" name="Layer">9</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+                <action id="-9" name="Destroy" type="Treasures" />
+                <action id="-10" name="Add to" type="System">
+                    <param id="0" name="Variable">SecurityDeposit</param>
+                    <param id="1" name="Value">1000</param>
+                </action>
+                <action id="-3" name="Create object" type="System">
+                    <param id="0" name="Object to create">SecurityDespositChange</param>
+                    <param id="1" name="Layer">9</param>
+                    <param id="2" name="X">499</param>
+                    <param id="3" name="Y">37</param>
+                </action>
+                <action id="0" name="Set text" type="SecurityDespositChange">
+                    <param id="0" name="Text">&quot;+1000&quot;</param>
+                </action>
+                <action id="4" name="Set font color" type="SecurityDespositChange">
+                    <param id="0" name="Color">rgb(0, 200, 0)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="-1" name="Every tick" type="System" />
+            </conditions>
+            <actions>
+                <action id="-2" name="Set Y" type="SecurityDespositChange">
+                    <param id="0" name="Y">Self.Y - 1</param>
                 </action>
             </actions>
         </event-block>

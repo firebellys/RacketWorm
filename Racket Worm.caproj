@@ -7,28 +7,28 @@
     <unique-id>3om4fqck6p5en</unique-id>
     <saved-with-version>11700</saved-with-version>
     <used-plugins>
+        <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
         <plugin author="Scirra" id="Arr" version="1">Array</plugin>
         <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
-        <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
-        <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
-        <plugin author="Scirra" id="Particles" version="1">Particles</plugin>
-        <plugin author="Scirra" id="Text" version="1">Text</plugin>
-        <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
-        <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
-        <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
-        <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
         <plugin author="Scirra" id="gamepad" version="1">Gamepad</plugin>
+        <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
         <plugin author="Zack0Wack0/Scirra" id="WebStorage" version="1">WebStorage</plugin>
+        <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
+        <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
+        <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
+        <plugin author="Scirra" id="Text" version="1">Text</plugin>
+        <plugin author="Scirra" id="Particles" version="1">Particles</plugin>
+        <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
     </used-plugins>
     <used-behaviors>
         <behavior author="Scirra" id="Fade" version="1">Fade</behavior>
-        <behavior author="Scirra" id="Physics" version="1">Physics</behavior>
         <behavior author="Scirra" id="scrollto" version="1">Scroll To</behavior>
-        <behavior author="Scirra" id="Pin" version="1">Pin</behavior>
-        <behavior author="Scirra" id="destroy" version="1">Destroy outside layout</behavior>
-        <behavior author="Scirra" id="solid" version="1">Solid</behavior>
         <behavior author="Scirra" id="bound" version="1">Bound to layout</behavior>
+        <behavior author="Scirra" id="solid" version="1">Solid</behavior>
+        <behavior author="Scirra" id="Pin" version="1">Pin</behavior>
         <behavior author="Scirra" id="Sin" version="1">Sine</behavior>
+        <behavior author="Scirra" id="destroy" version="1">Destroy outside layout</behavior>
+        <behavior author="Scirra" id="Physics" version="1">Physics</behavior>
     </used-behaviors>
     <used-effects />
     <configurations>
@@ -52,7 +52,7 @@
         <prop name="Use iOS retina display">Yes</prop>
     </configuration-settings>
     <object-folder expanded="1">
-        <object-folder expanded="1" name="Worm">
+        <object-folder expanded="0" name="Worm">
             <object-type name="SnakeHead">
                 <plugin id="Sprite" />
                 <instance-variables>
@@ -317,8 +317,36 @@
                     </animation>
                 </animation-folder>
             </object-type>
+            <object-type name="exclaimSprite">
+                <plugin id="Sprite" />
+                <behaviors>
+                    <behavior-type name="Fade">
+                        <behavior id="Fade" />
+                    </behavior-type>
+                </behaviors>
+                <animation-folder expanded="1">
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.509434">
+                            <collision-poly>
+                                <point x="0.166667" y="0.320755" />
+                                <point x="0.5" y="0.0943396" />
+                                <point x="0.833333" y="0.320755" />
+                                <point x="0.7" y="0.509434" />
+                                <point x="0.666667" y="0.603774" />
+                                <point x="0.5" y="0.924528" />
+                                <point x="0.333333" y="0.603774" />
+                                <point x="0.3" y="0.509434" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="moneySignparticles">
+                <plugin id="Particles" />
+                <texture />
+            </object-type>
         </object-folder>
-        <object-folder expanded="1" name="Enemies">
+        <object-folder expanded="0" name="Enemies">
             <object-type name="Human">
                 <plugin id="Sprite" />
                 <instance-variables>
@@ -389,6 +417,11 @@
                 <instance-variables>
                     <instance-variable name="Health" type="number" />
                 </instance-variables>
+                <behaviors>
+                    <behavior-type name="ScrollTo">
+                        <behavior id="scrollto" />
+                    </behavior-type>
+                </behaviors>
                 <animation-folder expanded="1">
                     <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
                         <frame duration="1" hotspotX="0.5" hotspotY="1" />
@@ -434,7 +467,7 @@
                 </animation-folder>
             </object-type>
         </object-folder>
-        <object-folder expanded="1" name="LandObjects">
+        <object-folder expanded="0" name="LandObjects">
             <object-type name="walls">
                 <plugin id="Sprite" />
                 <instance-variables>
@@ -799,6 +832,10 @@
                     </animation>
                 </animation-folder>
             </object-type>
+            <object-type name="BuildingWood">
+                <plugin id="Particles" />
+                <texture />
+            </object-type>
         </object-folder>
         <object-folder expanded="0" name="StartScreenStuff">
             <object-type name="Startuptime">
@@ -897,11 +934,6 @@
             </object-type>
             <object-type name="ApartmentArea">
                 <plugin id="Sprite" />
-                <behaviors>
-                    <behavior-type name="ScrollTo">
-                        <behavior id="scrollto" />
-                    </behavior-type>
-                </behaviors>
                 <animation-folder expanded="1">
                     <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
                         <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
@@ -944,6 +976,14 @@
                 <plugin id="Text" />
             </object-type>
             <object-type name="EXCLAIM">
+                <plugin id="Text" />
+                <behaviors>
+                    <behavior-type name="Fade">
+                        <behavior id="Fade" />
+                    </behavior-type>
+                </behaviors>
+            </object-type>
+            <object-type name="SecurityDespositChange">
                 <plugin id="Text" />
                 <behaviors>
                     <behavior-type name="Fade">
@@ -1051,7 +1091,7 @@
         </global-instance>
         <global-instance type="Touch">
             <properties>
-                <use-mouse-input>Yes</use-mouse-input>
+                <use-mouse-input>No</use-mouse-input>
             </properties>
         </global-instance>
         <global-instance type="Audio">
@@ -1063,7 +1103,7 @@
         <global-instance type="WebStorage" />
         <global-instance type="Mouse" />
     </global-instances>
-    <sounds-folder expanded="0">
+    <sounds-folder expanded="1">
         <file name="TimeTickHeartbeat.m4a" />
         <file name="TimeTickHeartbeat.ogg" />
         <file name="TimeTickHeartbeat.wav" />
@@ -1075,6 +1115,21 @@
         <file name="ExplosionDerez.m4a" />
         <file name="ExplosionDerez.ogg" />
         <file name="ExplosionDerez.wav" />
+        <file name="CoinThree.m4a" />
+        <file name="CoinThree.ogg" />
+        <file name="CoinThree.wav" />
+        <file name="PickupDull.m4a" />
+        <file name="PickupDull.ogg" />
+        <file name="PickupDull.wav" />
+        <file name="FailBuzzer.m4a" />
+        <file name="FailBuzzer.ogg" />
+        <file name="FailBuzzer.wav" />
+        <file name="SlamCooltree.m4a" />
+        <file name="SlamCooltree.ogg" />
+        <file name="SlamCooltree.wav" />
+        <file name="SwitchWooden.m4a" />
+        <file name="SwitchWooden.ogg" />
+        <file name="SwitchWooden.wav" />
     </sounds-folder>
     <music-folder expanded="0">
         <file name="DEATH WORM.m4a" />
